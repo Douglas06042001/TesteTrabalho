@@ -1,0 +1,213 @@
+html, body, div, span, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, a, em, img, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, article, footer, header, nav, section, main {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	vertical-align: baseline;
+}
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+}
+.container::after, .container::before {
+    content: "";
+    display: table;
+    clear: both;
+}
+.grid-1, .grid-2, .grid-3, .grid-4, .grid-5, .grid-6, .grid-7, .grid-8, .grid-9, .grid-10, .grid-11, .grid-12, .grid-mobile-6 {
+    float: left;
+    display: block;
+    min-height: 1px;
+    margin-left: 10px;
+    margin-right: 10px;
+} 
+.grid-1 {
+    width: calc(8.333% - 20px);
+}
+.grid-2 {
+    width: calc(16.666% - 20px);
+}
+.grid-3 {
+    width: calc(25% - 20px);
+}
+.grid-4 {
+    width: calc(33.333% - 20px);
+}
+.grid-5 {
+    width: calc(41.666% - 20px);
+}
+.grid-6 {
+    width: calc(50% - 20px);
+}
+.grid-7 {
+    width: calc(58.333% - 20px);
+}
+.grid-8 {
+    width: calc(66.666% - 20px);
+}
+.grid-9 {
+    width: calc(75% - 20px);
+}
+.grid-10 {
+    width: calc(83.333% - 20px);
+}
+.grid-11 {
+    width: calc(91.666% - 20px);
+}
+.grid-12 {
+    width: calc(100% - 20px);
+}
+.grid-mobile-6 {
+    width: calc(50% - 20px);
+}
+.row, .row-mobile {
+    margin-left: -10px;
+    margin-right: -10px;
+}
+.row::after, .row::before, .row-mobile::after, .row-mobile::before {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+@media (max-width: 896px) {
+    .container {
+        max-width: 300px;
+    }
+    .grid-1, .grid-2, .grid-3, .grid-4, .grid-5, .grid-6, .grid-7, .grid-8, .grid-9, .grid-10, .grid-11, .grid-12 {
+        float: none;
+        width: 100%;
+        margin-left: 0px;
+        margin-right: 0px;
+    } 
+    .row {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+}
+
+/* CSS DA PAGINA INICIAL */
+
+.header {
+    margin: -8px -8px !important;
+    background-color: rgb(190, 251, 255);
+    padding: 20px 0;
+}
+.logo {
+    height: 50px;
+}
+.titulo {
+    text-align: center;
+}
+#form {
+    display: block;
+    margin: 60px auto 0;
+    max-width: 100%;
+    background-color: rgb(190, 223, 223);
+    padding: 10px;
+    border-radius: 1em;
+}
+form h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+    font-weight: bold;
+}
+input, label {
+    display: block;
+}
+input {
+    height: 30px;
+    border: 1px solid #BEBEBE;
+    padding-left: 10px;
+    width: 97%;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+label {
+    margin-bottom: 10px;
+    margin-top: 20px;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+    font-weight: bold;
+}
+label:focus {
+    border: 1px solid #000;
+}
+select{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	border:1px solid #BEBEBE;
+	padding: 7px;
+	margin:0px;
+	-webkit-transition: all 0.30s ease-in-out;
+	-moz-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out;
+	-o-transition: all 0.30s ease-in-out;
+	outline: none;
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+#botao {
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: 1px solid #BEBEBE;
+    background-color: rgb(156, 239, 250);
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+.segunda-box {
+    margin-bottom: 20px;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 60px 0;
+    border: 1px solid #000;
+}
+thead {
+    background-color: rgb(113, 243, 243);
+}
+tbody {
+    background-color: rgb(243, 239, 239);
+    font-family: 'Courier New', Courier, monospace;
+}
+tbody:hover {
+    background-color: #f5f5f5;
+}
+th, td {
+    text-align: center;
+    padding: 5px;
+}
+th {
+    border-left: 1px solid #000;
+    font-family: 'Montserrat'
+}
+td {
+    padding: 4px 0;
+    border-left: 1px solid #000;
+    border-bottom: 1px solid #000;
+    font-family: 'Courier New', Courier, monospace;
+}
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+#editar, #excluir {
+    padding: 5px 10px;
+    height: 30px;
+    display: inline-block;
+    margin-top: 4px;
+}
+#excluir {
+    background-color: red;
+}
+#editar {
+    background-color: yellow;
+}
