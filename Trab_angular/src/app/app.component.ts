@@ -10,9 +10,23 @@ export class AppComponent {
 
   receita: receita = new receita()
   receitas: receita[] = []
+  tabela: [] = []
+  valores = new Array()
 
+  ngOnInit(): void {
+    this.iniciarTabela()
+  }
+
+  iniciarTabela() {
+    this.tabela = JSON.parse(localStorage.getItem("dados"))
+
+    if (this.tabela.length > 0) {
+      this.receitas = JSON.parse(localStorage.getItem("dados"))
+    }
+  }
+
+  
   saveData(form) {
-    console.log('salvando os dados')
 
     if (!this.receita.id) {
       this.receita.id = (new Date()).getTime()
@@ -24,6 +38,13 @@ export class AppComponent {
       oldreceita.descricao = this.receita.descricao
       oldreceita.valor = this.receita.valor
     }
+    
+
+    this.valores.push(
+      this.receita
+    )
+
+    localStorage.setItem('dados', JSON.stringify(this.valores))
 
     this.receita = new receita()
     form.resetForm()
