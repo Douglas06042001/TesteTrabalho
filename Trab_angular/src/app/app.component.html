@@ -34,9 +34,9 @@
       <h2>Despesas</h2>
       <p id="saldo-negativo"></p>
     </div>
-    <div class="grid-4 box">
+    <div class="grid-4 box total">
       <h2>Total</h2>
-      <p id="saldo-negativo"></p>
+      <p id="saldo-total"></p>
     </div>
   </section>
 
@@ -101,7 +101,8 @@
           <td>{{ rec.tipo_conta }}</td>
           <td>{{ rec.descricao }}</td>
           <td>{{ rec.data}}</td>
-          <td>R$ {{ rec.valor }}</td>
+          <td *ngIf="rec.tipo_conta == 'Despesa'">R$ -{{ rec.valor }}</td>
+          <td *ngIf="rec.tipo_conta == 'Receita'">R$ +{{ rec.valor }}</td>
           
           <td><input type="button" id="editar" value="Editar" (click)="editReceita(rec)"></td>
           <td><input type="button" id="excluir" value="excluir" (click)="removeReceita(rec)"></td>

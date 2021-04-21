@@ -35,16 +35,20 @@ export class AppComponent {
         this.valores.push(elemento)
       )
 
-      let valores_localstorage = JSON.parse(localStorage.getItem("saldo_positivo"))
-      console.log(valores_localstorage)
-
       //mostra saldo positivo na dashboard
       const positivo = document.getElementById('saldo-positivo')
-      positivo.innerText = localStorage.getItem('saldo_positivo') + 'R$'
+      positivo.innerText = localStorage.getItem('saldo_positivo') + ' R$'
 
       //mostra saldo negativo na dashboard
       const negativo = document.getElementById('saldo-negativo')
-      negativo.innerText = localStorage.getItem('saldo_negativo') + 'R$'
+      negativo.innerText = localStorage.getItem('saldo_negativo') + ' R$'
+
+      let saldo_negativo_ls = parseInt(localStorage.getItem('saldo_negativo'))
+      let saldo_positivo_ls = parseInt(localStorage.getItem('saldo_positivo'))
+
+      //mostra o saldo total na dashboard
+      const total = document.getElementById('saldo-total')
+      total.innerText = saldo_positivo_ls + saldo_negativo_ls + ' R$'
     }
   }
 
@@ -73,9 +77,12 @@ export class AppComponent {
       let valores_localstorage = JSON.parse(localStorage.getItem("saldo_positivo"))
 
       let valor = this.receita.valor + valores_localstorage
-      positivo.innerText = valor.toString() + 'R$'
+      positivo.innerText = valor.toString() + ' R$'
       this.resultado = valor
       localStorage.setItem('saldo_positivo', this.resultado.toString())
+
+      const total = document.getElementById('saldo-total')
+      total.innerText = parseInt(localStorage.getItem("saldo_positivo")) + parseInt(localStorage.getItem("saldo_negativo")) + ' R$'
 
       //se o tipo for despesa ele ira subtrair ao valor que esta lá
     } 
@@ -89,7 +96,10 @@ export class AppComponent {
 
       localStorage.setItem('saldo_negativo', this.resultado_negativo.toString())
 
-      negativo.innerText = valor_negativo.toString() + 'R$'
+      negativo.innerText = valor_negativo.toString() + ' R$'
+
+      const total = document.getElementById('saldo-total')
+      total.innerText = parseInt(localStorage.getItem("saldo_positivo")) + parseInt(localStorage.getItem("saldo_negativo")) + ' R$'
 
     }
 

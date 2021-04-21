@@ -232,3 +232,6 @@ tr:nth-child(even) {
 .negativo p {
     color: red;
 }
+.total p {
+    color: blue;
+}
