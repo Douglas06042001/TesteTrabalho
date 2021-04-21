@@ -35,21 +35,31 @@ export class AppComponent {
         this.valores.push(elemento)
       )
 
-      //mostra saldo positivo na dashboard
-      const positivo = document.getElementById('saldo-positivo')
-      positivo.innerText = localStorage.getItem('saldo_positivo') + ' R$'
+      this.mostrarSaldoPositivoDashboard()
 
-      //mostra saldo negativo na dashboard
-      const negativo = document.getElementById('saldo-negativo')
-      negativo.innerText = localStorage.getItem('saldo_negativo') + ' R$'
+      this.mostrarSaldoPositivoNegativo()
 
-      let saldo_negativo_ls = parseInt(localStorage.getItem('saldo_negativo'))
-      let saldo_positivo_ls = parseInt(localStorage.getItem('saldo_positivo'))
+      this.mostrarSaldoTotalDashboard()
 
-      //mostra o saldo total na dashboard
-      const total = document.getElementById('saldo-total')
-      total.innerText = saldo_positivo_ls + saldo_negativo_ls + ' R$'
     }
+  }
+
+  mostrarSaldoPositivoDashboard() {
+    //mostra saldo positivo na dashboard
+    const positivo = document.getElementById('saldo-positivo')
+    positivo.innerText = localStorage.getItem('saldo_positivo') + ' R$'
+  }
+
+  mostrarSaldoPositivoNegativo() {
+    //mostra saldo negativo na dashboard
+    const negativo = document.getElementById('saldo-negativo')
+    negativo.innerText = localStorage.getItem('saldo_negativo') + ' R$'
+  }
+
+  mostrarSaldoTotalDashboard() {
+    //mostra o saldo total na dashboard
+    const total = document.getElementById('saldo-total')
+    total.innerText = parseInt(localStorage.getItem('saldo_positivo')) + parseInt(localStorage.getItem('saldo_negativo')) + ' R$'
   }
 
   resultado = 0
@@ -88,15 +98,12 @@ export class AppComponent {
     } 
     if (this.receita.tipo_conta == 'Despesa'){
       
-      let valores_localstorage = parseInt(localStorage.getItem('saldo_negativo'))
-      console.log(valores_localstorage)
+      let valores_localstorage = JSON.parse(localStorage.getItem("saldo_negativo"))
 
-      let valor_negativo = valores_localstorage -  this.receita.valor
-      this.resultado_negativo = valor_negativo
-
-      localStorage.setItem('saldo_negativo', this.resultado_negativo.toString())
-
-      negativo.innerText = valor_negativo.toString() + ' R$'
+      let valor = valores_localstorage - this.receita.valor
+      negativo.innerText = valor.toString() + ' R$'
+      this.resultado = valor
+      localStorage.setItem('saldo_negativo', this.resultado.toString())
 
       const total = document.getElementById('saldo-total')
       total.innerText = parseInt(localStorage.getItem("saldo_positivo")) + parseInt(localStorage.getItem("saldo_negativo")) + ' R$'
