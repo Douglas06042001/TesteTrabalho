@@ -7,6 +7,7 @@
   <title>Controle de gastos</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 
 </head>
 <body>
@@ -18,11 +19,26 @@
       </div>
 
       <div class=" grid-8 titulo">
-        <h1>Controle de gast000os</h1>
+        <h1>Analise mensal de gastos</h1>
       </div>
 
     </div>
   </header>
+
+  <section class="container">
+    <div class="grid-4 box positivo">
+      <h2>Saldo</h2>
+      <p id="saldo-positivo"></p>
+    </div>
+    <div class="grid-4 box negativo">
+      <h2>Despesas</h2>
+      <p id="saldo-negativo"></p>
+    </div>
+    <div class="grid-4 box">
+      <h2>Total</h2>
+      <p id="saldo-negativo"></p>
+    </div>
+  </section>
 
   <div class="container">
     <form id="form" #userForm="ngForm" (ngSubmit)="saveData(userForm)">
@@ -93,6 +109,7 @@
       </tbody>
 
     </table>
+
   </div>
 
 </body>
