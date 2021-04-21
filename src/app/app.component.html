@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Controle de gastos</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+  <header class="header">
+    <div class="container">
+      <div class="grid-2">
+        <a href="/"><img src="../assets/logo.ico" class="logo" alt="logo da pagina"></a>
+      </div>
+
+      <div class=" grid-8 titulo">
+        <h1>Analise mensal de gastos</h1>
+      </div>
+
+    </div>
+  </header>
+
+  <section class="container">
+    <div class="grid-4 box positivo">
+      <h2>Saldo</h2>
+      <p id="saldo-positivo"></p>
+    </div>
+    <div class="grid-4 box negativo">
+      <h2>Despesas</h2>
+      <p id="saldo-negativo"></p>
+    </div>
+    <div class="grid-4 box">
+      <h2>Total</h2>
+      <p id="saldo-negativo"></p>
+    </div>
+  </section>
+
+  <div class="container">
+    <form id="form" #userForm="ngForm" (ngSubmit)="saveData(userForm)">
+
+      <h3>Insira as informações</h3>
+
+      <div class="grid-6">
+
+        <div class="tipo">
+          <label for="tipo">Tipo:</label>
+          <select id="tipo" name="tipo" [(ngModel)]="receita.tipo_conta"
+          #tipo="ngModel" required>
+          <option disabled selected value>  </option>
+          <option>Receita</option>
+          <option>Despesa</option>
+      </select> 
+        </div>
+
+        <div class="data">
+          <label for="data">Data:</label>
+          <input type="date" id="data" name="data" required 
+            [(ngModel)]="receita.data" #data="ngModel">
+        </div>
+      </div>
+
+      <div class="grid-6">
+
+        <div class="descricao">
+          <label for="descricao">Descrição:</label>
+          <input type="text" id="descricao" name="descricao" required 
+            [(ngModel)]="receita.descricao" #descricao="ngModel" minlength="4">
+        </div>
+
+        <div class="valor">
+          <label for="valor">Valor:</label>
+          <input type="number" id="valor" name="valor" required 
+            [(ngModel)]="receita.valor" #valor="ngModel" minlength="1">
+        </div>
+
+      </div>
+    
+      <input type="submit" value="Salvar" [disabled]="userForm.invalid">
+    </form>
+  
+    <table>
+      
+      <thead>
+        <tr>
+          <th>Tipo de conta</th>
+          <th>Descrição</th>
+          <th>Data</th>
+          <th>Valor</th>
+          <th>Editar</th>
+          <th>Remover</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let rec of receitas">
+          <td>{{ rec.tipo_conta }}</td>
+          <td>{{ rec.descricao }}</td>
+          <td>{{ rec.data}}</td>
+          <td>R$ {{ rec.valor }}</td>
+          
+          <td><input type="button" id="editar" value="Editar" (click)="editReceita(rec)"></td>
+          <td><input type="button" id="excluir" value="excluir" (click)="removeReceita(rec)"></td>
+        </tr>
+      </tbody>
+
+    </table>
+
+  </div>
+
+</body>
+</html>
